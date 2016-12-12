@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
     private void initNormalDialog(){
 
         dialog2 = new ShowAlertDialog.Builder(MainActivity.this)
-                .setHeight(0.24f)  //屏幕高度*0.23
-                .setWidth(0.66f)  //屏幕宽度*0.65
+                .setHeight(0.23f)  //屏幕高度*0.23
+                .setWidth(0.65f)  //屏幕宽度*0.65
                 .setTitleVisible(true)
                 .setTitleText("温馨提示")
                 .setTitleTextColor(R.color.black_light)
