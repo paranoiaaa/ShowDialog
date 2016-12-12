@@ -56,13 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         final ArrayList<String> s = new ArrayList<>();
-        s.add("Weavey0");
-        s.add("Weavey1");
-        s.add("Weavey2");
-        s.add("Weavey3");
+        s.add("拍照");
+        s.add("相册");
 
         dialog1 = new ShowSelectionDialog.Builder(this)
-                .setlTitleVisible(true)   //设置是否显示标题
+                .setlTitleVisible(false)   //设置是否显示标题
                 .setTitleHeight(65)   //设置标题高度
                 .setTitleText("please select")  //设置标题提示文本
                 .setTitleTextSize(14) //设置标题字体大小 sp
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 .setItemWidth(0.9f)  //屏幕宽度*0.9
                 .setItemTextColor(R.color.colorPrimaryDark)  //设置item字体颜色
                 .setItemTextSize(14)  //设置item字体大小
-                .setCancleButtonText("Cancle")  //设置最底部“取消”按钮文本
+                .setCancleButtonText("取消")  //设置最底部“取消”按钮文本
                 .setOnItemListener(new DialogOnItemClickListener() {  //监听item点击事件
                     @Override
                     public void onItemClick(Button button, int position) {
