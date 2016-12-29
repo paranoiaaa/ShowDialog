@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void clickRightButton(View view) {
-
                         dialog2.dismiss();
                     }
                 })

@@ -58,6 +58,7 @@ public class ShowAlertDialog implements View.OnClickListener {
     private void initDialog(Builder builder) {
 
         mDialog.setCanceledOnTouchOutside(builder.isTouchOutside());
+        mDialog.setCancelable(false);
 
         if (builder.getTitleVisible()) {
 
