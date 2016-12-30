@@ -9,6 +9,9 @@
 
     <color name="black_light">#363636</color> <!--黑-->
 
-    <color name="gray">#dcdcdc</color>
+    <color name="gray">#808080</color>
+
+    <color name="themeColor">#23bbfa</color>
+
 
 </resources>

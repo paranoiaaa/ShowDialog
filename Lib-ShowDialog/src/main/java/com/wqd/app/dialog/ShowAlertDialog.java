@@ -59,17 +59,13 @@ public class ShowAlertDialog implements View.OnClickListener {
 
         mDialog.setCanceledOnTouchOutside(builder.isTouchOutside());
         mDialog.setCancelable(false);
-
         if (builder.getTitleVisible()) {
-
             mTitle.setVisibility(View.VISIBLE);
         } else {
-
             mTitle.setVisibility(View.GONE);
         }
 
         if (builder.isSingleMode()) {
-
             mSingleBtn.setVisibility(View.VISIBLE);
             mLine.setVisibility(View.GONE);
             mLeftBtn.setVisibility(View.GONE);
@@ -168,15 +164,15 @@ public class ShowAlertDialog implements View.OnClickListener {
             singleButtonText = "确定";
             singleButtonTextColor = ContextCompat.getColor(mContext, R.color.black_light);
             leftButtonText = "取消";
-            leftButtonTextColor = ContextCompat.getColor(mContext, R.color.black_light);
+            leftButtonTextColor = ContextCompat.getColor(mContext, R.color.gray);
             rightButtonText = "确定";
-            rightButtonTextColor = ContextCompat.getColor(mContext, R.color.black_light);
+            rightButtonTextColor = ContextCompat.getColor(mContext, R.color.themeColor);
             onclickListener = null;
             singleListener = null;
             isTitleVisible = false;
-            isTouchOutside = true;
-            height = 0.23f;
-            width = 0.65f;
+            isTouchOutside = false;
+            height = 0.24f;
+            width = 0.66f;
             titleTextSize = 16;
             contentTextSize = 14;
             buttonTextSize = 14;
