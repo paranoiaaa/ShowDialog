@@ -169,7 +169,7 @@ public class ShowAlertDialog implements View.OnClickListener {
             rightButtonTextColor = ContextCompat.getColor(mContext, R.color.themeColor);
             onclickListener = null;
             singleListener = null;
-            isTitleVisible = false;
+            isTitleVisible = true;
             isTouchOutside = false;
             height = 0.24f;
             width = 0.66f;
