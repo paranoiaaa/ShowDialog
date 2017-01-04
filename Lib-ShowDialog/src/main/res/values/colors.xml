@@ -13,5 +13,14 @@
 
     <color name="themeColor">#23bbfa</color>
 
+    <color name="ios_btntext_blue">#007aff</color>
+
+    <color name="line_dd">#cccccc</color>
+
+    <color name="text_input_44">#444444</color>
+
+
+
+
 
 </resources>

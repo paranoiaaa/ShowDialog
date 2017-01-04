@@ -12,4 +12,6 @@ public interface DialogOnClickListener {
     void clickLeftButton(View view);
 
     void clickRightButton(View view);
+
+//    void clickRightButton(View view,String result);
 }

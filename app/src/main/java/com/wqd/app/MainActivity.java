@@ -7,17 +7,20 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.wqd.app.dialog.ShowAlertDialog;
+import com.wqd.app.dialog.ShowPromptDialog;
 import com.wqd.app.dialog.ShowSelectionDialog;
 import com.wqd.app.listener.DialogOnClickListener;
 import com.wqd.app.listener.DialogOnItemClickListener;
+import com.wqd.app.listener.PromptClickListener;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private Button mButton1,mButton2,mButton3;
+    private Button mButton1,mButton2,mButton3,mButton4;
     private ShowSelectionDialog dialog1;
     private ShowAlertDialog dialog2;
     private ShowAlertDialog dialog3;
+    private ShowPromptDialog mDialog4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         mButton1= (Button) findViewById(R.id.button1);
         mButton2= (Button) findViewById(R.id.button2);
         mButton3= (Button) findViewById(R.id.button3);
+        mButton4= (Button) findViewById(R.id.button4);
+
         mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,11 +52,49 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        mButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDialog4.show();
+
+            }
+        });
+
         initBottomDialog();
         initNormalDialog();
         initNormalDialog2();
+        iniPromptDialog();
 
     }
+
+    private void iniPromptDialog() {
+        mDialog4 = new ShowPromptDialog.Builder(MainActivity.this)
+                .setHeight(0.23f)  //屏幕高度*0.23
+                .setWidth(0.65f)  //屏幕宽度*0.65
+                .setTitleVisible(true)
+                .setTitleText("温馨提示")
+                .setTitleTextColor(R.color.black_light)
+                .setContentText("是否关闭对话框？")
+                .setContentTextColor(R.color.black_light)
+                .setLeftButtonText("关闭")
+                .setLeftButtonTextColor(R.color.gray)
+                .setRightButtonText("不关闭")
+                .setRightButtonTextColor(R.color.black_light)
+                .setPromptText("初始化输入文字")
+                .setOnclickListener(new PromptClickListener() {
+                    @Override
+                    public void clickLeftButton(View view) {mDialog4.dismiss();
+                    }
+
+                    @Override
+                    public void clickRightButton(View view,String result) {
+                        Toast.makeText(MainActivity.this,result,Toast.LENGTH_SHORT).show();
+                        mDialog4.dismiss();
+                    }
+                })
+                .build();
+    }
+
     private void initBottomDialog() {
 
 
