@@ -80,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 .setLeftButtonTextColor(R.color.gray)
                 .setRightButtonText("不关闭")
                 .setRightButtonTextColor(R.color.black_light)
-                .setPromptText("初始化输入文字")
+                .setHintText("初始化输入文字")
+                .setPromptMaxLength(5)
+                .setContentText("请输入新的群组名称,最长12位")
                 .setOnclickListener(new PromptClickListener() {
                     @Override
                     public void clickLeftButton(View view) {mDialog4.dismiss();

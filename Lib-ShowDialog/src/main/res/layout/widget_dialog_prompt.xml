@@ -25,14 +25,6 @@
             android:text="温馨提示"
             android:textSize="16sp"
             />
-
-        <TextView
-            android:id="@+id/dialog_normal_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:textSize="14sp"/>
-
         <EditText
             android:layout_marginTop="5dp"
             android:id="@+id/dialog_normal_prompt"
@@ -49,6 +41,15 @@
             android:textSize="14sp"
             android:textColor="@color/text_input_44"
             android:layout_height="35dp" />
+        <TextView
+            android:id="@+id/dialog_normal_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/gray"
+            android:textSize="14sp"/>
 
     </LinearLayout>
 

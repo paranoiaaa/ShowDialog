@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.ColorRes;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -82,6 +85,8 @@ public class ShowPromptDialog implements View.OnClickListener{
         mContent.setTextColor(builder.getContentTextColor());
         mContent.setTextSize(builder.getContentTextSize());
         mEditText.setText(builder.getPromptText());
+        mEditText.setHint(builder.getHintText());
+        mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(builder.getPromptMaxLength())});
         mLeftBtn.setText(builder.getLeftButtonText());
         mLeftBtn.setTextColor(builder.getLeftButtonTextColor());
         mLeftBtn.setTextSize(builder.getButtonTextSize());
@@ -91,10 +96,27 @@ public class ShowPromptDialog implements View.OnClickListener{
         mSingleBtn.setText(builder.getSingleButtonText());
         mSingleBtn.setTextColor(builder.getSingleButtonTextColor());
         mSingleBtn.setTextSize(builder.getButtonTextSize());
-
         mLeftBtn.setOnClickListener(this);
         mRightBtn.setOnClickListener(this);
         mSingleBtn.setOnClickListener(this);
+        mEditText.setSelection(mEditText.getText().length());
+        mEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mEditText.setSelection(s.length());
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -141,6 +163,7 @@ public class ShowPromptDialog implements View.OnClickListener{
         private int contentTextColor;
         private int contentTextSize;
         private String promptText;
+        private String hintText;
         private boolean isSingleMode;
         private String singleButtonText;
         private int singleButtonTextColor;
@@ -155,6 +178,7 @@ public class ShowPromptDialog implements View.OnClickListener{
         private boolean isTouchOutside;
         private float height;
         private float width;
+        private int maxLength;
         private Context mContext;
 
         public Builder(Context context) {
@@ -233,6 +257,25 @@ public class ShowPromptDialog implements View.OnClickListener{
             this.promptText=promptText;
             return this;
         }
+
+        public String getHintText(){
+            return hintText;
+        }
+
+        public ShowPromptDialog.Builder setHintText(String hintText){
+            this.hintText=hintText;
+            return this;
+        }
+
+        public ShowPromptDialog.Builder setPromptMaxLength(int maxLength){
+            this.maxLength=maxLength;
+            return this;
+        }
+
+        public int getPromptMaxLength(){
+            return maxLength;
+        }
+
 
         public boolean isSingleMode() {
             return isSingleMode;
