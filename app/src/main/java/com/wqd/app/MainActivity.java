@@ -149,12 +149,11 @@ public class MainActivity extends AppCompatActivity {
                 .setOnclickListener(new DialogOnClickListener() {
                     @Override
                     public void clickLeftButton(View view) {
-                        dialog2.dismiss();
                     }
 
                     @Override
                     public void clickRightButton(View view) {
-                        dialog2.dismiss();
+
                     }
                 })
                 .build();

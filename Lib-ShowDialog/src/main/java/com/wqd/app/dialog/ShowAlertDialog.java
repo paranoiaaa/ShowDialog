@@ -101,18 +101,21 @@ public class ShowAlertDialog implements View.OnClickListener {
         if (i == R.id.dialog_normal_leftbtn && mBuilder.getOnclickListener() != null) {
 
             mBuilder.getOnclickListener().clickLeftButton(mLeftBtn);
+            mDialog.dismiss();
             return;
         }
 
         if (i == R.id.dialog_normal_rightbtn && mBuilder.getOnclickListener() != null) {
 
             mBuilder.getOnclickListener().clickRightButton(mRightBtn);
+            mDialog.dismiss();
             return;
         }
 
         if (i == R.id.dialog_normal_midbtn && mBuilder.getSingleListener() != null) {
 
             mBuilder.getSingleListener().onClick(mSingleBtn);
+            mDialog.dismiss();
             return;
         }
 
