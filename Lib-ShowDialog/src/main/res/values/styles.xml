@@ -12,10 +12,10 @@
         <item name="android:windowAnimationStyle">@style/bottomDialogAnim</item>
     </style>
 
-    <style name="bottomDialogAnim" parent="android:Animation">
-        <item name="@android:windowEnterAnimation">@anim/bottom_dialog_enter
+    <style name="bottomDialogAnim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/bottom_dialog_enter
         </item>
-        <item name="@android:windowExitAnimation">@anim/bottom_dialog_exit
+        <item name="android:windowExitAnimation">@anim/bottom_dialog_exit
         </item>
     </style>
 
@@ -30,10 +30,10 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
-    <style name="normalDialogAnim" parent="android:Animation">
-        <item name="@android:windowEnterAnimation">@anim/normal_dialog_enter
+    <style name="normalDialogAnim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/normal_dialog_enter
         </item>
-        <item name="@android:windowExitAnimation">@anim/normal_dialog_exit
+        <item name="android:windowExitAnimation">@anim/normal_dialog_exit
         </item>
     </style>
 
