@@ -37,7 +37,6 @@ public class ShowPromptDialog implements View.OnClickListener{
     private ShowPromptDialog.Builder mBuilder;
 
     public ShowPromptDialog(ShowPromptDialog.Builder builder) {
-
         this.mBuilder = builder;
         mDialog = new Dialog(mBuilder.getContext(), R.style.NormalDialogStyle);
         mDialogView = View.inflate(mBuilder.getContext(), R.layout.widget_dialog_prompt, null);
@@ -189,8 +188,8 @@ public class ShowPromptDialog implements View.OnClickListener{
             singleListener = null;
             isTitleVisible = true;
             isTouchOutside = false;
-            height = 0.24f;
-            width = 0.66f;
+            height = 0.23f;
+            width = 0.65f;
             titleTextSize = 16;
             contentTextSize = 14;
             buttonTextSize = 14;

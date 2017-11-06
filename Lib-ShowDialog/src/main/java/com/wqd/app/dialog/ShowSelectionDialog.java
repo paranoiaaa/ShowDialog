@@ -35,7 +35,6 @@ public class ShowSelectionDialog {
     private int selectPosition;//最后一次选择的位置
 
     public ShowSelectionDialog(Builder builder) {
-
         this.mBuilder = builder;
         mDialog = new Dialog(mBuilder.getContext(), R.style.bottomDialogStyle);
         dialogView = View.inflate(mBuilder.getContext(), R.layout.widget_bottom_dialog, null);
@@ -51,20 +50,12 @@ public class ShowSelectionDialog {
         linearLayout = dialogView.findViewById(R.id.action_dialog_linearlayout);
         bottomBtn = dialogView.findViewById(R.id.action_dialog_botbtn);
         bottomBtn.setText(builder.getCancleButtonText());
-        bottomBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                mDialog.dismiss();
-            }
-        });
+        bottomBtn.setOnClickListener(arg0 -> mDialog.dismiss());
         mDialog.setCanceledOnTouchOutside(builder.isTouchOutside());
     }
 
     //根据数据生成item
     private void loadItem() {
-        //设置标题
         if (mBuilder.getTitleVisible()) {
             title.setVisibility(View.VISIBLE);
             title.setText(mBuilder.getTitleText());
@@ -80,7 +71,6 @@ public class ShowSelectionDialog {
                 title.setBackgroundResource(R.drawable.selector_widget_actiondialog_single);
             }
         } else {
-
             title.setVisibility(View.GONE);
         }
         bottomBtn.setTextColor(mBuilder.getItemTextColor());
@@ -122,17 +112,10 @@ public class ShowSelectionDialog {
         button.setTextSize(mBuilder.getItemTextSize());
         button.setLayoutParams(new LinearLayout.LayoutParams(AbsListView.LayoutParams
                 .MATCH_PARENT, mBuilder.getItemHeight()));
-        button.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                if (mBuilder.getOnItemListener() != null) {
-
-                    selectPosition = Integer.parseInt(button.getTag().toString());
-                    mBuilder.getOnItemListener().onItemClick(button, selectPosition);
-
-                }
+        button.setOnClickListener(arg0 -> {
+            if (mBuilder.getOnItemListener() != null) {
+                selectPosition = Integer.parseInt(button.getTag().toString());
+                mBuilder.getOnItemListener().onItemClick(button, selectPosition);
             }
         });
 
@@ -144,7 +127,7 @@ public class ShowSelectionDialog {
         if (count > 1) {
             linearLayout.removeViewsInLayout(1, count - 1);
         }
-        this.datas = (datas == null ? new ArrayList<String>() : datas);
+        this.datas = (datas == null ? new ArrayList<>() : datas);
         loadItem();
     }
 
@@ -161,7 +144,6 @@ public class ShowSelectionDialog {
     }
 
     public static class Builder {
-
         private boolean boolTitle;
         private int titleHeight;
         private String titleText;

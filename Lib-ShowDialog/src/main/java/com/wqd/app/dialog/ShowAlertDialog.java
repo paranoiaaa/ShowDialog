@@ -31,7 +31,6 @@ public class ShowAlertDialog implements View.OnClickListener {
     private Builder mBuilder;
 
     public ShowAlertDialog(Builder builder) {
-
         this.mBuilder = builder;
         mDialog = new Dialog(mBuilder.getContext(), R.style.NormalDialogStyle);
         mDialogView = View.inflate(mBuilder.getContext(), R.layout.widget_dialog_normal, null);
@@ -44,7 +43,6 @@ public class ShowAlertDialog implements View.OnClickListener {
         mDialogView.setMinimumHeight((int) (ScreenSizeUtils.getInstance(mBuilder.getContext())
                 .getScreenHeight() * builder.getHeight()));
         mDialog.setContentView(mDialogView);
-
         Window dialogWindow = mDialog.getWindow();
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         lp.width = (int) (ScreenSizeUtils.getInstance(mBuilder.getContext()).getScreenWidth() *
@@ -98,13 +96,11 @@ public class ShowAlertDialog implements View.OnClickListener {
             return;
         }
         if (i == R.id.dialog_normal_rightbtn && mBuilder.getOnclickListener() != null) {
-
             mBuilder.getOnclickListener().clickRightButton(mRightBtn);
             mDialog.dismiss();
             return;
         }
         if (i == R.id.dialog_normal_midbtn && mBuilder.getSingleListener() != null) {
-
             mBuilder.getSingleListener().onClick(mSingleBtn);
             mDialog.dismiss();
             return;
@@ -121,7 +117,6 @@ public class ShowAlertDialog implements View.OnClickListener {
     }
 
     public static class Builder {
-
         private String titleText;
         private int titleTextColor;
         private int titleTextSize;
@@ -169,7 +164,6 @@ public class ShowAlertDialog implements View.OnClickListener {
         }
 
         Context getContext() {
-
             return mContext;
         }
 
