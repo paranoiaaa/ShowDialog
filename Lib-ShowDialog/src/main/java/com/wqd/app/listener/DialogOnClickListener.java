@@ -3,15 +3,12 @@ package com.wqd.app.listener;
 import android.view.View;
 
 /**
- * Created by weavey
+ * Created by Paranoia
  * on 2016-09-05.
- * todo
  */
 public interface DialogOnClickListener {
 
     void clickLeftButton(View view);
 
     void clickRightButton(View view);
-
-//    void clickRightButton(View view,String result);
 }

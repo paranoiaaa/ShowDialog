@@ -41,13 +41,13 @@ public class ShowPromptDialog implements View.OnClickListener{
         this.mBuilder = builder;
         mDialog = new Dialog(mBuilder.getContext(), R.style.NormalDialogStyle);
         mDialogView = View.inflate(mBuilder.getContext(), R.layout.widget_dialog_prompt, null);
-        mTitle = (TextView) mDialogView.findViewById(R.id.dialog_normal_title);
-        mContent = (TextView) mDialogView.findViewById(R.id.dialog_normal_content);
-        mLeftBtn = (Button) mDialogView.findViewById(R.id.dialog_normal_leftbtn);
-        mRightBtn = (Button) mDialogView.findViewById(R.id.dialog_normal_rightbtn);
-        mSingleBtn = (Button) mDialogView.findViewById(R.id.dialog_normal_midbtn);
-        mLine = (TextView) mDialogView.findViewById(R.id.dialog_normal_line);
-        mEditText= (EditText) mDialogView.findViewById(R.id.dialog_normal_prompt);
+        mTitle = mDialogView.findViewById(R.id.dialog_normal_title);
+        mContent = mDialogView.findViewById(R.id.dialog_normal_content);
+        mLeftBtn = mDialogView.findViewById(R.id.dialog_normal_leftbtn);
+        mRightBtn = mDialogView.findViewById(R.id.dialog_normal_rightbtn);
+        mSingleBtn = mDialogView.findViewById(R.id.dialog_normal_midbtn);
+        mLine = mDialogView.findViewById(R.id.dialog_normal_line);
+        mEditText= mDialogView.findViewById(R.id.dialog_normal_prompt);
         mDialogView.setMinimumHeight((int) (ScreenSizeUtils.getInstance(mBuilder.getContext())
                 .getScreenHeight() * builder.getHeight()));
         mDialog.setContentView(mDialogView);
@@ -62,7 +62,6 @@ public class ShowPromptDialog implements View.OnClickListener{
     }
 
     private void initDialog(ShowPromptDialog.Builder builder) {
-
         mDialog.setCanceledOnTouchOutside(builder.isTouchOutside());
         mDialog.setCancelable(false);
         if (builder.getTitleVisible()) {
@@ -70,14 +69,12 @@ public class ShowPromptDialog implements View.OnClickListener{
         } else {
             mTitle.setVisibility(View.GONE);
         }
-
         if (builder.isSingleMode()) {
             mSingleBtn.setVisibility(View.VISIBLE);
             mLine.setVisibility(View.GONE);
             mLeftBtn.setVisibility(View.GONE);
             mRightBtn.setVisibility(View.GONE);
         }
-
         mTitle.setText(builder.getTitleText());
         mTitle.setTextColor(builder.getTitleTextColor());
         mTitle.setTextSize(builder.getTitleTextSize());
@@ -122,43 +119,33 @@ public class ShowPromptDialog implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-
         int i = view.getId();
         if (i == R.id.dialog_normal_leftbtn && mBuilder.getOnclickListener() != null) {
-
             mBuilder.getOnclickListener().clickLeftButton(mLeftBtn);
             mDialog.dismiss();
             return;
         }
-
         if (i == R.id.dialog_normal_rightbtn && mBuilder.getOnclickListener() != null) {
-
             mBuilder.getOnclickListener().clickRightButton(mRightBtn,mEditText.getText().toString());
             mDialog.dismiss();
             return;
         }
-
         if (i == R.id.dialog_normal_midbtn && mBuilder.getSingleListener() != null) {
-
             mBuilder.getSingleListener().onClick(mSingleBtn);
             mDialog.dismiss();
             return;
         }
-
     }
 
     public void show() {
-
         mDialog.show();
     }
 
     public void dismiss() {
-
         mDialog.dismiss();
     }
 
     public static class Builder {
-
         private String titleText;
         private int titleTextColor;
         private int titleTextSize;
@@ -185,7 +172,6 @@ public class ShowPromptDialog implements View.OnClickListener{
         private Context mContext;
 
         public Builder(Context context) {
-
             mContext = context;
             titleText = "温馨提示";
             titleTextColor = ContextCompat.getColor(mContext, R.color.black_light);
@@ -208,15 +194,14 @@ public class ShowPromptDialog implements View.OnClickListener{
             titleTextSize = 16;
             contentTextSize = 14;
             buttonTextSize = 14;
-
         }
 
-        public Context getContext() {
+        Context getContext() {
 
             return mContext;
         }
 
-        public String getTitleText() {
+        String getTitleText() {
             return titleText;
         }
 
@@ -225,7 +210,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public int getTitleTextColor() {
+        int getTitleTextColor() {
             return titleTextColor;
         }
 
@@ -234,7 +219,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public String getContentText() {
+        String getContentText() {
             return contentText;
         }
 
@@ -243,7 +228,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public int getContentTextColor() {
+        int getContentTextColor() {
             return contentTextColor;
         }
 
@@ -252,7 +237,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public String getPromptText(){
+        String getPromptText(){
             return promptText;
         }
 
@@ -261,7 +246,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public String getHintText(){
+        String getHintText(){
             return hintText;
         }
 
@@ -275,12 +260,12 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public int getPromptMaxLength(){
+        int getPromptMaxLength(){
             return maxLength;
         }
 
 
-        public boolean isSingleMode() {
+        boolean isSingleMode() {
             return isSingleMode;
         }
 
@@ -289,7 +274,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public String getSingleButtonText() {
+        String getSingleButtonText() {
             return singleButtonText;
         }
 
@@ -298,7 +283,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public int getSingleButtonTextColor() {
+        int getSingleButtonTextColor() {
             return singleButtonTextColor;
         }
 
@@ -307,7 +292,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public String getLeftButtonText() {
+        String getLeftButtonText() {
             return leftButtonText;
         }
 
@@ -316,7 +301,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public int getLeftButtonTextColor() {
+        int getLeftButtonTextColor() {
             return leftButtonTextColor;
         }
 
@@ -325,7 +310,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public String getRightButtonText() {
+        String getRightButtonText() {
             return rightButtonText;
         }
 
@@ -334,7 +319,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public int getRightButtonTextColor() {
+        int getRightButtonTextColor() {
             return rightButtonTextColor;
         }
 
@@ -343,7 +328,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public PromptClickListener getOnclickListener() {
+        PromptClickListener getOnclickListener() {
             return onclickListener;
         }
 
@@ -352,7 +337,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public View.OnClickListener getSingleListener() {
+        View.OnClickListener getSingleListener() {
             return singleListener;
         }
 
@@ -361,7 +346,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public boolean getTitleVisible() {
+        boolean getTitleVisible() {
             return isTitleVisible;
         }
 
@@ -370,17 +355,16 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public boolean isTouchOutside() {
+        boolean isTouchOutside() {
             return isTouchOutside;
         }
 
         public ShowPromptDialog.Builder setCanceledOnTouchOutside(boolean isTouchOutside) {
-
             this.isTouchOutside = isTouchOutside;
             return this;
         }
 
-        public int getContentTextSize() {
+        int getContentTextSize() {
             return contentTextSize;
         }
 
@@ -389,7 +373,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public int getTitleTextSize() {
+        int getTitleTextSize() {
             return titleTextSize;
         }
 
@@ -398,7 +382,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public int getButtonTextSize() {
+        int getButtonTextSize() {
             return buttonTextSize;
         }
 
@@ -407,7 +391,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public float getHeight() {
+        float getHeight() {
             return height;
         }
 
@@ -416,7 +400,7 @@ public class ShowPromptDialog implements View.OnClickListener{
             return this;
         }
 
-        public float getWidth() {
+        float getWidth() {
             return width;
         }
 
@@ -426,7 +410,6 @@ public class ShowPromptDialog implements View.OnClickListener{
         }
 
         public ShowPromptDialog build() {
-
             return new ShowPromptDialog(this);
         }
     }

@@ -22,17 +22,14 @@ import com.wqd.app.util.UiUtils;
 import java.util.ArrayList;
 
 /**
- * Created by Weavey on 2016/9/4.
+ * Created by Paranoia on 2016/9/4.
  */
 public class ShowSelectionDialog {
-
-
     private Dialog mDialog;
     private View dialogView;
     private TextView title;
     private Button bottomBtn;
     private LinearLayout linearLayout;
-
     private Builder mBuilder;
     private ArrayList<String> datas;
     private int selectPosition;//最后一次选择的位置
@@ -42,9 +39,7 @@ public class ShowSelectionDialog {
         this.mBuilder = builder;
         mDialog = new Dialog(mBuilder.getContext(), R.style.bottomDialogStyle);
         dialogView = View.inflate(mBuilder.getContext(), R.layout.widget_bottom_dialog, null);
-        mDialog.setContentView(dialogView); // 一定要在setAttributes(lp)之前才有效
-
-        //设置dialog的宽
+        mDialog.setContentView(dialogView);
         Window dialogWindow = mDialog.getWindow();
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         lp.width = (int) (ScreenSizeUtils.getInstance(mBuilder.getContext()).getScreenWidth() *
@@ -52,11 +47,9 @@ public class ShowSelectionDialog {
         lp.gravity = Gravity.BOTTOM;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         dialogWindow.setAttributes(lp);
-
-
-        title = (TextView) dialogView.findViewById(R.id.action_dialog_title);
-        linearLayout = (LinearLayout) dialogView.findViewById(R.id.action_dialog_linearlayout);
-        bottomBtn = (Button) dialogView.findViewById(R.id.action_dialog_botbtn);
+        title = dialogView.findViewById(R.id.action_dialog_title);
+        linearLayout = dialogView.findViewById(R.id.action_dialog_linearlayout);
+        bottomBtn = dialogView.findViewById(R.id.action_dialog_botbtn);
         bottomBtn.setText(builder.getCancleButtonText());
         bottomBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -71,10 +64,8 @@ public class ShowSelectionDialog {
 
     //根据数据生成item
     private void loadItem() {
-
         //设置标题
         if (mBuilder.getTitleVisible()) {
-
             title.setVisibility(View.VISIBLE);
             title.setText(mBuilder.getTitleText());
             title.setTextColor(mBuilder.getTitleTextColor());
@@ -82,7 +73,6 @@ public class ShowSelectionDialog {
             LinearLayout.LayoutParams l = (LinearLayout.LayoutParams) title.getLayoutParams();
             l.height = UiUtils.dp2px(mBuilder.getContext(), mBuilder.getTitleHeight());
             title.setLayoutParams(l);
-
             if (datas.size() != 0) {
                 title.setBackgroundResource(R.drawable.selector_widget_actiondialog_top);
 
@@ -93,29 +83,21 @@ public class ShowSelectionDialog {
 
             title.setVisibility(View.GONE);
         }
-
-        //设置底部“取消”按钮
         bottomBtn.setTextColor(mBuilder.getItemTextColor());
         bottomBtn.setTextSize(mBuilder.getItemTextSize());
         LinearLayout.LayoutParams btnlp = new LinearLayout.LayoutParams(AbsListView.LayoutParams
                 .MATCH_PARENT, mBuilder.getItemHeight());
         btnlp.topMargin = 10;
         bottomBtn.setLayoutParams(btnlp);
-
-        //设置数据item
         if (datas.size() == 1) {
-
             Button button = getButton(datas.get(0), 0);
             if (mBuilder.getTitleVisible())
                 button.setBackgroundResource(R.drawable.selector_widget_actiondialog_bottom);
             else button.setBackgroundResource(R.drawable.selector_widget_actiondialog_single);
-
             linearLayout.addView(button);
 
         } else if (datas.size() > 1) {
-
             for (int i = 0; i < datas.size(); i++) {
-
                 Button button = getButton(datas.get(i), i);
                 if (!mBuilder.getTitleVisible() && i == 0) {
                     button.setBackgroundResource(R.drawable.selector_widget_actiondialog_top);
@@ -130,13 +112,9 @@ public class ShowSelectionDialog {
                 linearLayout.addView(button);
             }
         }
-
-
     }
 
     private Button getButton(String text, int position) {
-
-        // 动态生成选择按钮
         final Button button = new Button(mBuilder.getContext());
         button.setText(text);
         button.setTag(position);
@@ -162,77 +140,63 @@ public class ShowSelectionDialog {
     }
 
     public void setDataList(ArrayList<String> datas) {
-
         int count = linearLayout.getChildCount();
         if (count > 1) {
             linearLayout.removeViewsInLayout(1, count - 1);
         }
-//
         this.datas = (datas == null ? new ArrayList<String>() : datas);
         loadItem();
     }
 
     public boolean isShowing() {
-
         return mDialog.isShowing();
     }
 
     public void show() {
-
         mDialog.show();
-
     }
 
     public void dismiss() {
-
         mDialog.dismiss();
     }
 
     public static class Builder {
 
-        //标题属性
         private boolean boolTitle;
         private int titleHeight;
         private String titleText;
         private int titleTextColor;
         private float titleTextSize;
-        //item属性
         private DialogOnItemClickListener onItemListener;
         private int itemHeight;
         private float itemWidth;
         private int itemTextColor;
         private float itemTextSize;
-        //取消按钮属性
         private String cancleButtonText;
-
         private boolean isTouchOutside;
         private Context mContext;
 
         public Builder(Context context) {
-
             mContext = context;
-
-            boolTitle = false; // 默认关闭标题
-            titleHeight = 65; // 默认标题高度  dp
+            boolTitle = false;
+            titleHeight = 65;
             titleText = "请选择";
             titleTextColor = ContextCompat.getColor(context, R.color.black_light);
             titleTextSize = 13;
-
             onItemListener = null;
-            itemHeight = UiUtils.dp2px(context, 45); // 默认item高度
+            itemHeight = UiUtils.dp2px(context, 45);
             itemWidth = 0.92f;
-            itemTextColor = ContextCompat.getColor(mContext, R.color.black_light); // 默认字体颜色
-            itemTextSize = 14;  //默认自体大小
-
+            itemTextColor = ContextCompat.getColor(mContext, R.color.black_light);
+            itemTextSize = 14;
             cancleButtonText = "取消";
             isTouchOutside = true;
         }
 
-        public Context getContext() {
+        Context getContext() {
             return mContext;
         }
 
-        public boolean getTitleVisible() {
+        boolean getTitleVisible() {
             return boolTitle;
         }
 
@@ -241,7 +205,7 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public int getTitleHeight() {
+        int getTitleHeight() {
             return titleHeight;
         }
 
@@ -250,7 +214,7 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public String getTitleText() {
+        String getTitleText() {
             return titleText;
         }
 
@@ -259,7 +223,7 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public int getTitleTextColor() {
+        int getTitleTextColor() {
             return titleTextColor;
         }
 
@@ -268,7 +232,7 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public float getTitleTextSize() {
+        float getTitleTextSize() {
             return titleTextSize;
         }
 
@@ -278,7 +242,7 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public DialogOnItemClickListener getOnItemListener() {
+        DialogOnItemClickListener getOnItemListener() {
             return onItemListener;
         }
 
@@ -287,7 +251,7 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public int getItemHeight() {
+        int getItemHeight() {
             return itemHeight;
         }
 
@@ -296,8 +260,7 @@ public class ShowSelectionDialog {
             return this;
         }
 
-
-        public float getItemWidth() {
+        float getItemWidth() {
             return itemWidth;
         }
 
@@ -306,18 +269,16 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public int getItemTextColor() {
-
+        int getItemTextColor() {
             return itemTextColor;
         }
 
         public Builder setItemTextColor(@ColorRes int itemTextColor) {
-
             this.itemTextColor = ContextCompat.getColor(mContext, itemTextColor);
             return this;
         }
 
-        public float getItemTextSize() {
+        float getItemTextSize() {
             return itemTextSize;
         }
 
@@ -326,7 +287,7 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public String getCancleButtonText() {
+        String getCancleButtonText() {
             return cancleButtonText;
         }
 
@@ -335,20 +296,17 @@ public class ShowSelectionDialog {
             return this;
         }
 
-        public boolean isTouchOutside() {
+        boolean isTouchOutside() {
             return isTouchOutside;
         }
 
         public Builder setCanceledOnTouchOutside(boolean isTouchOutside) {
-
             this.isTouchOutside = isTouchOutside;
             return this;
         }
 
         public ShowSelectionDialog build() {
-
             return new ShowSelectionDialog(this);
         }
     }
-
 }
