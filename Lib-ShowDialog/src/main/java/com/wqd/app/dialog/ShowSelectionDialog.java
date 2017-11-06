@@ -164,7 +164,7 @@ public class ShowSelectionDialog {
             titleHeight = 65;
             titleText = "请选择";
             titleTextColor = ContextCompat.getColor(context, R.color.black_light);
-            titleTextSize = 13;
+            titleTextSize = 14;
             onItemListener = null;
             itemHeight = UiUtils.dp2px(context, 45);
             itemWidth = 0.92f;
