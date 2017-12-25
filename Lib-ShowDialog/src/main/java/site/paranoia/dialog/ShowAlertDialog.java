@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import site.paranoia.dialog.listener.DialogOnClickListener;
 import site.paranoia.dialog.util.ScreenSizeUtils;
-import com.wqd.app.showdialog.R;
 
 /**
  *

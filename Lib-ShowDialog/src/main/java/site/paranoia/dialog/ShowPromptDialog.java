@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import site.paranoia.dialog.listener.PromptClickListener;
-import com.wqd.app.showdialog.R;
 import site.paranoia.dialog.util.ScreenSizeUtils;
 
 /**
