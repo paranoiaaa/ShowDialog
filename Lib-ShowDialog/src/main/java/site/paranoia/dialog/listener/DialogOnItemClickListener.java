@@ -1,4 +1,4 @@
-package com.wqd.app.listener;
+package site.paranoia.dialog.listener;
 
 import android.widget.Button;
 

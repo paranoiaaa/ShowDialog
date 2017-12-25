@@ -1,4 +1,4 @@
-package com.wqd.app.dialog;
+package site.paranoia.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,15 +14,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.wqd.app.listener.DialogOnItemClickListener;
+import site.paranoia.dialog.listener.DialogOnItemClickListener;
 import com.wqd.app.showdialog.R;
-import com.wqd.app.util.ScreenSizeUtils;
-import com.wqd.app.util.UiUtils;
+import site.paranoia.dialog.util.ScreenSizeUtils;
+import site.paranoia.dialog.util.UiUtils;
 
 import java.util.ArrayList;
 
 /**
- * Created by Paranoia on 2016/9/4.
+ *
+ * @author Paranoia
+ * @date 2016/9/4
  */
 public class ShowSelectionDialog {
     private Dialog mDialog;

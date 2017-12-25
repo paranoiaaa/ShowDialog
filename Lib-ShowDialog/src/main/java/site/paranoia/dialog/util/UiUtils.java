@@ -1,4 +1,4 @@
-package com.wqd.app.util;
+package site.paranoia.dialog.util;
 
 import android.content.Context;
 

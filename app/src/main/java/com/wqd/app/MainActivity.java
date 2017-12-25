@@ -7,12 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.wqd.app.dialog.ShowAlertDialog;
-import com.wqd.app.dialog.ShowPromptDialog;
-import com.wqd.app.dialog.ShowSelectionDialog;
-import com.wqd.app.listener.DialogOnClickListener;
-import com.wqd.app.listener.DialogOnItemClickListener;
-import com.wqd.app.listener.PromptClickListener;
+import site.paranoia.dialog.ShowAlertDialog;
+import site.paranoia.dialog.ShowPromptDialog;
+import site.paranoia.dialog.ShowSelectionDialog;
+import site.paranoia.dialog.listener.DialogOnClickListener;
+import site.paranoia.dialog.listener.PromptClickListener;
 
 import java.util.ArrayList;
 
