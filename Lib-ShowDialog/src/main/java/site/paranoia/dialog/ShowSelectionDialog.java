@@ -21,7 +21,6 @@ import site.paranoia.dialog.util.UiUtils;
 import java.util.ArrayList;
 
 /**
- *
  * @author Paranoia
  * @date 2016/9/4
  */
@@ -51,7 +50,12 @@ public class ShowSelectionDialog {
         linearLayout = dialogView.findViewById(R.id.action_dialog_linearlayout);
         bottomBtn = dialogView.findViewById(R.id.action_dialog_botbtn);
         bottomBtn.setText(builder.getCancleButtonText());
-        bottomBtn.setOnClickListener(arg0 -> mDialog.dismiss());
+        bottomBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.dismiss();
+            }
+        });
         mDialog.setCanceledOnTouchOutside(builder.isTouchOutside());
     }
 
@@ -116,10 +120,13 @@ public class ShowSelectionDialog {
         button.setTextSize(mBuilder.getItemTextSize());
         button.setLayoutParams(new LinearLayout.LayoutParams(AbsListView.LayoutParams
                 .MATCH_PARENT, mBuilder.getItemHeight()));
-        button.setOnClickListener(arg0 -> {
-            if (mBuilder.getOnItemListener() != null) {
-                selectPosition = Integer.parseInt(button.getTag().toString());
-                mBuilder.getOnItemListener().onItemClick(button, selectPosition);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mBuilder.getOnItemListener() != null) {
+                    selectPosition = Integer.parseInt(button.getTag().toString());
+                    mBuilder.getOnItemListener().onItemClick(button, selectPosition);
+                }
             }
         });
 
@@ -131,7 +138,7 @@ public class ShowSelectionDialog {
         if (count > 1) {
             linearLayout.removeViewsInLayout(1, count - 1);
         }
-        this.datas = (datas == null ? new ArrayList<>() : datas);
+        this.datas = (datas == null ? new ArrayList<String>() : datas);
         loadItem();
     }
 
